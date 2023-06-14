@@ -1,0 +1,19 @@
+---
+## we should install plugin by using this command   =>   ansible-galaxy collection install amazon.aws
+plugin: aws_ec2
+regions:
+- "us-east-2"
+keyed_groups:
+  - key: tags
+    prefix: tag
+  - prefix: instance_type
+    key: instance_type
+  - key: placement.region
+    prefix: aws_region
+filters:
+  instance-state-name: running
+  tag:Name:
+    - k8s-master1
+    - k8s-master2
+compose:
+  ansible_host: private_ip_address

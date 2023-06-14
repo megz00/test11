@@ -1,0 +1,5 @@
+---
+ - hosts: aws_ec2
+   remote_user: ubuntu
+   roles:
+     - k8s-master-role
